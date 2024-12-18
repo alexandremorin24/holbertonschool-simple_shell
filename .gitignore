@@ -1,0 +1,32 @@
+# Ignore everything by default
+*
+
+# Explicitly include the required files
+!*.c
+!*.h
+!README.md
+!.gitignore
+!diagram.png
+
+# Ignore compiled or executable files
+a.out
+main
+
+# Ignore temporary files
+*.o          # Object files
+*.tmp        # Temporary files
+*.log        # Log files
+*.swp        # Vim swap files
+*.swo        # Additional Vim swap files
+*~           # Backup files
+.DS_Store    # macOS
+Thumbs.db    # Windows
+desktop.ini  # Windows
+
+# Ignore editor-specific files and folders
+.vscode/
+.idea/
+
+# Ignore the documentation directory and all its contents
+Concept/
+Concept/*
