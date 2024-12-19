@@ -8,7 +8,10 @@
 #include <sys/wait.h>
 #include <string.h>
 
+extern char **environ;
+
 char *read_line(void);
 char **split_line(char *line);
+int execute(char **tokens);
 
 #endif

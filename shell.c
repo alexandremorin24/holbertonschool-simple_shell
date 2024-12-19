@@ -34,8 +34,7 @@ int main(void)
 
 		tokens = split_line(line);
 
-		for (i = 0; tokens[i] != NULL; i++)
-		printf("Token %zu: %s\n", i, tokens[i]);
+		status = execute(tokens);
 
 		free(line);
 		free(tokens);
