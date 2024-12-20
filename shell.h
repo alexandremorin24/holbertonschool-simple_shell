@@ -11,7 +11,8 @@
 extern char **environ;
 
 char *read_line(void);
-char **split_line(char *line);
+char **split_line(char *line, char *delim);
 int execute(char **tokens);
+char *_getenv(const char *name);
 
 #endif

@@ -13,7 +13,7 @@ char *read_line(void)
 	return (buffer);
 }
 
-char **split_line(char *line)
+char **split_line(char *line, char *delim)
 {
 	size_t bufsize = 64;    /* Initial size for tokens array */
 	size_t i = 0;           /* Index for tokens */
@@ -26,7 +26,7 @@ char **split_line(char *line)
 		exit(EXIT_FAILURE);
 	}
 
-	token = strtok(line, " \t\r\n\a");
+	token = strtok(line, delim);
 
 	while (token != NULL)
 	{
@@ -44,7 +44,7 @@ char **split_line(char *line)
 			}
 		}
 
-		token = strtok(NULL, " \t\r\n\a");
+		token = strtok(NULL, delim);
 	}
 	tokens[i] = NULL;
 	return (tokens);
