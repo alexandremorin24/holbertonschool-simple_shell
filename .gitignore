@@ -5,8 +5,10 @@
 !*.c
 !*.h
 !README.md
+!man_1_simple_shell
 !.gitignore
 !diagram.png
+!AUTHORS
 
 # Ignore compiled or executable files
 a.out
