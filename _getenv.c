@@ -1,7 +1,5 @@
 #include "shell.h"
 
-extern char **environ;
-
 char *_getenv(const char *name)
 {
 	size_t len = strlen(name);

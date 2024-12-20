@@ -27,10 +27,10 @@ char **split_line(char *line, char *delim)
 	}
 
 	token = strtok(line, delim);
-
 	while (token != NULL)
 	{
 		tokens[i] = token;
+
 		i++;
 
 		if (i >= bufsize)
@@ -43,9 +43,9 @@ char **split_line(char *line, char *delim)
 				exit(EXIT_FAILURE);
 			}
 		}
-
 		token = strtok(NULL, delim);
 	}
+
 	tokens[i] = NULL;
 	return (tokens);
 }
