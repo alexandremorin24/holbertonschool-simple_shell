@@ -22,7 +22,7 @@ int main(void)
 
 	while (status)
 	{
-		printf("$ "); /* Display the prompt */
+		printf("#cisfun$ "); /* Display the prompt */
 
 		line = read_line(); /* Read a line of input from the user with getline */
 
@@ -40,7 +40,11 @@ int main(void)
 			continue;
 		}
 
-		full_path = find_command(path_value, tokens[0]);
+		if (tokens[0][0] == '/')
+			full_path = tokens[0];
+		else 
+			full_path = find_command(path_value, tokens[0]);
+
 		if (full_path)
 		{
 			tokens[0] = full_path;

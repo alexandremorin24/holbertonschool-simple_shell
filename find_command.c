@@ -21,7 +21,7 @@ char *find_command(char **paths, char *command)
 		fprintf(stderr, "Invalid arguments to find_command\n");
 		return (NULL);
 	}
-	
+
 	cmd_len = strlen(command);
 
 	while (paths[i] != NULL)
@@ -52,5 +52,6 @@ char *find_command(char **paths, char *command)
 	}
 
 	fprintf(stderr, "Error: Command '%s' not found in PATH\n", command);
+
 	return (NULL);
 }
