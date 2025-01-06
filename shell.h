@@ -16,5 +16,9 @@ char **split_line(char *line, char *delim);
 int execute(char **tokens);
 char *find_command(char **paths, char *command);
 char *_getenv(const char *name);
+int handle_empty_tokens(char **tokens);
+int process_command(char **tokens, char **path_value);
+void print_env(void);
+void free_resources(char **tokens, char *line);
 
 #endif
