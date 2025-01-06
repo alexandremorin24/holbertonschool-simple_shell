@@ -1,6 +1,5 @@
 #include "shell.h"
 
-
 /**
  * find_command - Searches for the full path of a command in a list of paths.
  * @paths: An array of strings, each representing a directory in the PATH.
@@ -12,21 +11,21 @@
  */
 char *find_command(char **paths, char *command)
 {
-	size_t i = 0;
+	size_t i = 0, path_len, cmd_len;
 	char *full_path = NULL;
-	size_t path_len, cmd_len;
 
-	if (paths == NULL || command == NULL)
+	if (command[0] == '/')
 	{
-		fprintf(stderr, "Invalid arguments to find_command\n");
+		if (access(command, F_OK) == 0 && access(command, X_OK) == 0)
+			return (command);  /* Return absolute path directly */
+		fprintf(stderr, "Command '%s' not found or not executable\n", command);
 		return (NULL);
 	}
-
-	cmd_len = strlen(command);
 
 	while (paths[i] != NULL)
 	{
 		path_len = strlen(paths[i]); /* Length of the current path string */
+		cmd_len = strlen(command);
 
 		full_path = malloc(path_len + cmd_len + 2);
 		if (!full_path)
@@ -34,24 +33,18 @@ char *find_command(char **paths, char *command)
 			perror("Memory allocation error");
 			return (NULL);
 		}
+
 		strcpy(full_path, paths[i]);
 		strcat(full_path, "/");
 		strcat(full_path, command);
 
-		if (access(full_path, F_OK) == 0) /* File exists */
-		{
-			if (access(full_path, X_OK) == 0) /* File is executable */
+		if (access(full_path, F_OK) == 0 && access(full_path, X_OK) == 0)
 			return (full_path);
-			/* If the file is not executable, print an error */
-			fprintf(stderr, "Error: %s exists but is not executable\n", full_path);
-			free(full_path);
-			return (NULL);
-		}
+
 		free(full_path);
 		i++;
 	}
 
 	fprintf(stderr, "Error: Command '%s' not found in PATH\n", command);
-
 	return (NULL);
 }
