@@ -16,32 +16,44 @@ char *read_line(void)
 char **split_line(char *line, char *delim)
 {
 	size_t bufsize = 64;    /* Initial size for tokens array */
-	size_t i = 0;           /* Index for tokens */
+	size_t i = 0, j = 0;           /* Index for tokens */
 	char **tokens = malloc(bufsize * sizeof(char *)); /* Allocate memory for tokens array */
 	char *token;            /* Temporary pointer for each token */
+	char **temp;
 
 	if (!tokens) /* Check memory allocation */
 	{
 		perror("allocation error");
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
 
 	token = strtok(line, delim);
 	while (token != NULL)
 	{
-		tokens[i] = token;
-
+		tokens[i] = strdup(token);
+		if (!tokens[i])
+		{
+			perror("strdup error");
+			for (j = 0; j < i; j++)
+				free(tokens[j]);
+			free(tokens);
+			return (NULL);
+	}
 		i++;
 
 		if (i >= bufsize)
 		{
 			bufsize += 64;
-			tokens = realloc(tokens, bufsize * sizeof(char *));
-			if (!tokens)
+			temp = realloc(tokens, bufsize * sizeof(char *));
+			if (!temp)
 			{
 				perror("reallocation error");
-				exit(EXIT_FAILURE);
+				for (j = 0; j < i; j++)
+					free(tokens[j]);
+				free(tokens);
+				return (NULL);
 			}
+			tokens = temp;
 		}
 		token = strtok(NULL, delim);
 	}

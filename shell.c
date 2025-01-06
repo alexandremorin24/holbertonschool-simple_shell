@@ -13,7 +13,7 @@ int main(void)
 	int status = 1; /* Status to control the main loop (1 = running, 0 = exit) */
 	char *full_path;   /* Pointer to store the result of find_command */
 	char **path_value; /* Variable to hold the PATH environment variable */
-	size_t i = 0;
+	size_t i = 0, j = 0;
 	/* Get the PATH value at startup */
 
 	path_value = split_line(_getenv("PATH"), ":");
@@ -33,6 +33,7 @@ int main(void)
 		}
 
 		tokens = split_line(line, " \t\r\n\a");
+		free(line);
 
 		if (tokens[0] == NULL) /* Handle empty tokens */
 		{
@@ -47,10 +48,14 @@ int main(void)
 
 		if (full_path)
 		{
+			if (full_path != tokens[0])
+				free(tokens[0]);
 			tokens[0] = full_path;
 			status = execute(tokens);
 		}
-		free(tokens);
+		for (j = 0; tokens[j] != NULL; j++) /* Free each token */
+			free(tokens[j]);
+		free(tokens); /* Free the token array */
 	}
 
 	while (path_value[i] != NULL)
