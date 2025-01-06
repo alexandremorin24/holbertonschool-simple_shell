@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * read_line - Reads a line of input from stdin.
+ *
+ * Return: A pointer to the buffer containing the line read,
+ *         or NULL if an error occurs or EOF is encountered.
+ */
 char *read_line(void)
 {
 	char *buffer = NULL;
@@ -13,12 +19,20 @@ char *read_line(void)
 	return (buffer);
 }
 
+/**
+ * split_line - Splits a line into tokens based on a delimiter.
+ * @line: The line to split into tokens.
+ * @delim: The delimiter used to split the line.
+ *
+ * Return: An array of strings (tokens),
+ *         or NULL in case of memory allocation failure.
+ */
 char **split_line(char *line, char *delim)
 {
-	size_t bufsize = 64;    /* Initial size for tokens array */
-	size_t i = 0;           /* Index for tokens */
-	char **tokens = malloc(bufsize * sizeof(char *)); /* Allocate memory for tokens array */
-	char *token;            /* Temporary pointer for each token */
+	size_t bufsize = 64;
+	size_t i = 0;
+	char **tokens = malloc(bufsize * sizeof(char *));
+	char *token;
 
 	if (!tokens) /* Check memory allocation */
 	{
@@ -27,10 +41,17 @@ char **split_line(char *line, char *delim)
 	}
 
 	token = strtok(line, delim);
-	while (token != NULL)
+	while (token)
 	{
-		tokens[i] = token;
+		/* Allocate memory for each token */
+		tokens[i] = malloc(strlen(token) + 1);
+		if (!tokens[i])
+		{
+			perror("allocation error for token");
+			exit(EXIT_FAILURE);
+		}
 
+		strcpy(tokens[i], token); /* Copy the token to the tokens array */
 		i++;
 
 		if (i >= bufsize)
