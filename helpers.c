@@ -27,6 +27,9 @@ int process_command(char **tokens, char **path_value)
 {
 	char *full_path;
 
+	if (tokens == NULL || tokens[0] == NULL)
+		return (1);
+
 	if (strcmp(tokens[0], "exit") == 0)
 		return (0);
 
@@ -59,12 +62,12 @@ int process_command(char **tokens, char **path_value)
  */
 void print_env(void)
 {
-	size_t i = 0;
+	char **env = environ;
 
-	while (environ[i] != NULL)
+	while (*env)
 	{
-		printf("%s\n", environ[i]);
-		i++;
+		printf("%s\n", *env);
+		env++;
 	}
 }
 
