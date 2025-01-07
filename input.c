@@ -55,7 +55,7 @@ char **split_line(char *line, char *delim)
 	if (i >= bufsize)
 	{
 		bufsize += 64;
-		temp = realloc(tokens, bufsize * sizeof(char *));
+		temp = _realloc(tokens, bufsize - 64, bufsize * sizeof(char *));
 		if (!temp)
 		{
 			perror("realloc failed\n");

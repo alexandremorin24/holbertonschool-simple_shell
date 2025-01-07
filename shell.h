@@ -20,5 +20,6 @@ int handle_empty_tokens(char **tokens);
 int process_command(char **tokens, char **path_value);
 void print_env(void);
 void free_resources(char **tokens, char *line);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 #endif
