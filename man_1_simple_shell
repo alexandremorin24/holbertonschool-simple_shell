@@ -1,1 +1,123 @@
-man_1_simple_shell
+.TH SIMPLE_SHELL 1 "January 2025" "Holberton School" "SIMPLE SHELL MANUAL"
+.SH NAME
+simple_shell \- a simple Unix command-line interpreter
+
+.SH SYNOPSIS
+.nf
+.B ./simple_shell
+.fi
+
+.SH DESCRIPTION
+The
+.B simple_shell
+is a basic Unix shell implementation capable of interpreting and executing user commands. It mimics the behavior of standard shells like
+.B bash
+and
+.B sh
+but with limited functionality, as part of the Holberton School curriculum.
+
+This shell reads commands from the standard input (interactive or non-interactive modes), interprets them, and executes the corresponding programs.
+
+.SS Features
+- Executes commands located in directories specified by the
+.I PATH
+environment variable.
+- Supports the
+.B env
+built-in command to print the current environment.
+- Provides an
+.B exit
+built-in command to terminate the shell.
+- Handles basic input parsing and error reporting.
+
+.SH MODES
+The
+.B simple_shell
+supports two modes of operation:
+
+.SS Interactive Mode
+In this mode, the shell prompts the user for commands. The prompt
+.B #cisfun$
+is displayed, and the user can enter commands interactively:
+.nf
+$ ./simple_shell
+#cisfun$ ls
+file1  file2
+#cisfun$ exit
+$
+.fi
+
+.SS Non-Interactive Mode
+In this mode, the shell reads commands from a file or standard input and executes them automatically without displaying a prompt:
+.nf
+$ echo "ls -l" | ./simple_shell
+total 0
+-rw-r--r-- 1 user group 0 Jan 1 00:00 file1
+-rw-r--r-- 1 user group 0 Jan 1 00:00 file2
+$
+.fi
+
+.SH BUILT-IN COMMANDS
+.SS env
+Prints the current environment variables. Each variable is displayed as a key-value pair in the format:
+.nf
+.B KEY=VALUE
+.fi
+
+Example:
+.nf
+$ env
+USER=john
+PATH=/usr/bin:/bin
+...
+.fi
+
+.SS exit
+Terminates the shell session. Optionally, you can provide an exit status:
+.nf
+$ exit 0
+.fi
+If no status is provided, the default exit status is 0.
+
+.SH EXAMPLES
+.B Running a command
+.nf
+$ ./simple_shell
+#cisfun$ pwd
+/home/user
+#cisfun$ exit
+$
+.fi
+
+.B Using the env built-in
+.nf
+$ ./simple_shell
+#cisfun$ env
+USER=user
+PATH=/usr/bin:/bin
+HOME=/home/user
+#cisfun$ exit
+$
+.fi
+
+.SH COMPILATION
+To compile the source files for
+.B simple_shell,
+use the following command:
+.nf
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o simple_shell
+.fi
+
+.SH AUTHORS
+This project was created as part of the Holberton School curriculum.
+
+.B Alexandre MORIN
+GitHub: https://github.com/alexandremorin24
+Email: alexandre.morin24@gmail.com
+
+.B Nicolas LASSOUANE
+GitHub: https://github.com/turtle-nest
+Email: 9820@holbertonstudents.com
+
+.SH SEE ALSO
+.B bash(1), sh(1)
