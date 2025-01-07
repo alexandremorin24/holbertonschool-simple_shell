@@ -20,7 +20,9 @@ int main(void)
 
 	while (status)
 	{
-		printf("#cisfun$ ");
+		if (isatty(STDIN_FILENO))
+			printf("#cisfun$ ");
+
 		line = read_line();
 
 		if (!line)
