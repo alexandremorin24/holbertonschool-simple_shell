@@ -29,44 +29,43 @@ char *read_line(void)
  */
 char **split_line(char *line, char *delim)
 {
-	size_t bufsize = 64;
-	size_t i = 0;
+	size_t bufsize = 64, i = 0;
 	char **tokens = malloc(bufsize * sizeof(char *));
 	char *token;
+	char **temp;
 
-	if (!tokens) /* Check memory allocation */
+	if (!tokens)
 	{
-		perror("allocation error");
-		exit(EXIT_FAILURE);
+		perror("Memory allocation failed");
+		return (NULL);
 	}
 
 	token = strtok(line, delim);
 	while (token)
 	{
-		/* Allocate memory for each token */
-		tokens[i] = malloc(strlen(token) + 1);
+		tokens[i] = strdup(token);
 		if (!tokens[i])
 		{
-			perror("allocation error for token");
-			exit(EXIT_FAILURE);
+			perror("strdup error");
+			free_resources(tokens, NULL);
+			return (NULL);
 		}
-
-		strcpy(tokens[i], token); /* Copy the token to the tokens array */
 		i++;
 
-		if (i >= bufsize)
+	if (i >= bufsize)
+	{
+		bufsize += 64;
+		temp = realloc(tokens, bufsize * sizeof(char *));
+		if (!temp)
 		{
-			bufsize += 64;
-			tokens = realloc(tokens, bufsize * sizeof(char *));
-			if (!tokens)
-			{
-				perror("reallocation error");
-				exit(EXIT_FAILURE);
-			}
+			perror("realloc failed\n");
+			free_resources(tokens, NULL);
+			return (NULL);
 		}
+		tokens = temp;
+	}
 		token = strtok(NULL, delim);
 	}
-
 	tokens[i] = NULL;
 	return (tokens);
 }

@@ -14,7 +14,6 @@ int execute(char **tokens)
 	int status;
 
 	pid = fork();
-
 	if (pid == -1)
 	{
 		perror("fork failed\n");
@@ -24,7 +23,11 @@ int execute(char **tokens)
 	if (pid == 0)
 	{
 		if (execve(tokens[0], tokens, environ) == -1)
-			perror("Error\n");
+		{
+			perror("execve failed\n");
+			free_resources(tokens, NULL);
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 	{

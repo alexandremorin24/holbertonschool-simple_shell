@@ -38,10 +38,17 @@ char *find_command(char **paths, char *command)
 		strcat(full_path, "/");
 		strcat(full_path, command);
 
-		if (access(full_path, F_OK) == 0 && access(full_path, X_OK) == 0)
-			return (full_path);
-
+		if (access(full_path, F_OK) == 0) /* File exists */
+		{
+			if (access(full_path, X_OK) == 0) /* File is executable */
+				return (full_path);
+			/* If the file is not executable, print an error */
+			fprintf(stderr, "Error: %s exists but is not executable\n", full_path);
+			free(full_path);
+			return (NULL);
+		}
 		free(full_path);
+		full_path = NULL;
 		i++;
 	}
 
