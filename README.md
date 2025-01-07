@@ -36,7 +36,6 @@ This project uses the C standard libraries.
 ## Installation
 
 To compile and run `simple_shell`, you need to have a C compiler (such as `gcc`) installed on your system.
-
 ### Clone the repository
 If you haven't already, clone the repository to your local machine:
 ```bash
@@ -71,12 +70,12 @@ exit
 
 The project consists of the following files:
 
-simple_shell.c - The main file containing the shell loop and execution logic.
-shell.h - The header file containing function declarations and necessary includes.
-split_line.c - Contains the function for splitting input into tokens.
-find_command.c - Contains the function for finding the command in the PATH.
-man_1_simple_shell - The manual page for the project (for man command).
-README.md - This documentation file.
+- simple_shell.c - The main file containing the shell loop and execution logic.
+- shell.h - The header file containing function declarations and necessary includes.
+- split_line.c - Contains the function for splitting input into tokens.
+- find_command.c - Contains the function for finding the command in the PATH.
+- man_1_simple_shell - The manual page for the project (for man command).
+- README.md - This documentation file.
 
 ## Man page
 
@@ -107,8 +106,8 @@ Command not found: nonexistent_command
 ### Memory testing
 
 ## Authors
-Alexxandre MORIN
-Nicolas LASSOUANE
+- Alexxandre MORIN
+- Nicolas LASSOUANE
 
 More informations or contact in this page :
 https://github.com/alexandremorin24/holbertonschool-simple_shell/blob/main/AUTHORS
