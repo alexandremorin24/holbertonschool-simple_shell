@@ -21,7 +21,6 @@ char *find_command(char **paths, char *command)
 		fprintf(stderr, "Command '%s' not found or not executable\n", command);
 		return (NULL);
 	}
-
 	while (paths[i] != NULL)
 	{
 		path_len = strlen(paths[i]); /* Length of the current path string */
@@ -33,11 +32,9 @@ char *find_command(char **paths, char *command)
 			perror("Memory allocation error");
 			return (NULL);
 		}
-
 		strcpy(full_path, paths[i]);
 		strcat(full_path, "/");
 		strcat(full_path, command);
-
 		if (access(full_path, F_OK) == 0) /* File exists */
 		{
 			if (access(full_path, X_OK) == 0) /* File is executable */
@@ -51,7 +48,6 @@ char *find_command(char **paths, char *command)
 		full_path = NULL;
 		i++;
 	}
-
 	fprintf(stderr, "Error: Command '%s' not found in PATH\n", command);
 	return (NULL);
 }
