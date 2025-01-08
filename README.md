@@ -10,7 +10,6 @@
 - [File Structure](#file-structure)
 - [Man page](#man-page)
 - [Examples](#examples)
-- [Testing](#testing)
 - [Licence](#License)
 - [Authors](#authors)
 
@@ -40,6 +39,9 @@ To compile and run `simple_shell`, you need to have a C compiler (such as `gcc`)
 If you haven't already, clone the repository to your local machine:
 ```bash
 git clone https://github.com/alexandremorin24/holbertonschool-simple_shell
+```
+Then :
+```bash
 cd simple_shell
 ```
 ### Compilation
@@ -70,12 +72,18 @@ exit
 
 The project consists of the following files:
 
-- simple_shell.c - The main file containing the shell loop and execution logic.
-- shell.h - The header file containing function declarations and necessary includes.
-- split_line.c - Contains the function for splitting input into tokens.
-- find_command.c - Contains the function for finding the command in the PATH.
-- man_1_simple_shell - The manual page for the project (for man command).
-- README.md - This documentation file.
+- `shell.c` - The main file containing the shell loop and execution logic.
+- `shell.h` - The header file containing function declarations and necessary includes.
+- `split_line.c` - Contains the function for splitting input into tokens.
+- `find_command.c` - Contains the function for finding the command in the PATH.
+- `execute.c` - Contains the function for executing commands.
+- `process_command.c` - Contains the `process_command` function for processing and executing commands.
+- `input.c` - Contains the function for reading input from the user.
+- `_getenv.c` - Contains the function for retrieving environment variables.
+- `built_in.c` - Contains the functions for built-in commands like `exit` and `env`.
+- `helpers.c` - Contains helper functions such as `_realloc` and `print_env`.
+- `man_1_simple_shell` - The manual page for the project (for man command).
+- `README.md` - This documentation file.
 
 ## Man page
 
@@ -87,7 +95,21 @@ https://github.com/alexandremorin24/holbertonschool-simple_shell/blob/main/man_1
 ### Example 1: Listing files in the current directory
 ```bash
 #cisfun$ ls -l
-
+total 176
+-rw-r--r--@ 1 root  staff      8  4 jan 11:07 AUTHORS
+drwxr-xr-x@ 5 root  staff    160  6 jan 09:41 Concept
+-rw-r--r--@ 1 root  staff   4392  8 jan 09:19 README.md
+-rw-r--r--@ 1 root  staff    509  7 jan 13:24 _getenv.c
+-rw-r--r--@ 1 root  staff    491  8 jan 09:14 built_in.c
+-rw-r--r--@ 1 root  staff    597  7 jan 12:59 execute.c
+-rw-r--r--@ 1 root  staff   1614  7 jan 14:01 find_command.c
+-rw-r--r--@ 1 root  staff   1767  8 jan 09:15 helpers.c
+-rwxr-xr-x@ 1 root  staff  34944  8 jan 09:27 hsh
+-rw-r--r--@ 1 root  staff   1362  7 jan 20:34 input.c
+-rw-r--r--@ 1 root  staff   2544  7 jan 20:34 man_1_simple_shell
+-rw-r--r--@ 1 root  staff    778  8 jan 09:15 process_command.c
+-rw-r--r--@ 1 root  staff    779  7 jan 13:05 shell.c
+-rw-r--r--@ 1 root  staff    687  8 jan 09:14 shell.h
 ```
 ### Example 2: Running a command with an absolute path
 ```bash
@@ -100,10 +122,6 @@ https://github.com/alexandremorin24/holbertonschool-simple_shell/blob/main/man_1
 Error: Command 'nonexistent_command' not found in PATH
 Command not found: nonexistent_command
 ```
-
-## Testing
-
-### Memory testing
 
 ## Authors
 - Alexxandre MORIN
