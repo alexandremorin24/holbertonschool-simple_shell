@@ -40,7 +40,7 @@ char *find_command(char **paths, char *command)
 			if (access(full_path, X_OK) == 0) /* File is executable */
 				return (full_path);
 			/* If the file is not executable, print an error */
-			fprintf(stderr, "Error: %s exists but is not executable\n", full_path);
+			fprintf(stderr, "bash: %s: permission denied\n", command);
 			free(full_path);
 			return (NULL);
 		}
@@ -48,6 +48,6 @@ char *find_command(char **paths, char *command)
 		full_path = NULL;
 		i++;
 	}
-	fprintf(stderr, "Error: Command '%s' not found in PATH\n", command);
+	fprintf(stderr, "bash: %s: command not found\n", command);
 	return (NULL);
 }

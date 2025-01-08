@@ -30,10 +30,5 @@ int process_command(char **tokens, char **path_value)
 		tokens[0] = full_path;
 		return (execute(tokens));
 	}
-	else
-	{
-		fprintf(stderr, "Command not found: %s\n", tokens[0]);
-	}
-
 	return (1);
 }
