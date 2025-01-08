@@ -2,16 +2,16 @@
 
 ## 📜 Table of Contents
 
-- [Description](#description)
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Flowchart](#flowchart)
-- [File Structure](#file-structure)
-- [Man page](#man-page)
-- [Examples](#examples)
-- [Licence](#license)
-- [Authors](#authors)
+- [Description](#-description)
+- [Features](#-features)
+- [Requirements](#-requirements)
+- [Installation](#-installation)
+- [Flowchart](#-flowchart)
+- [File Structure](#-file-structure)
+- [Man page](#-man-page)
+- [Examples](#-examples)
+- [Licence](#-license)
+- [Authors](#-authors)
 
 ## ✨ Description
 
@@ -63,7 +63,7 @@ Compile the project using:
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 
-### Usage
+## 📘 Usage
 Run the shell in **interactive mode**:
 ```bash
 ./hsh
