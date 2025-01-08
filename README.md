@@ -29,7 +29,7 @@
 
 ## Requirements
 
-All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
+All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89  
 This project uses the C standard libraries.
 
 ## Installation
@@ -79,7 +79,6 @@ The project consists of the following files:
 - `execute.c` - Contains the function for executing commands.
 - `process_command.c` - Contains the `process_command` function for processing and executing commands.
 - `input.c` - Contains the function for reading input from the user.
-- `_getenv.c` - Contains the function for retrieving environment variables.
 - `built_in.c` - Contains the functions for built-in commands like `exit` and `env`.
 - `helpers.c` - Contains helper functions such as `_realloc` and `print_env`.
 - `man_1_simple_shell` - The manual page for the project (for man command).
@@ -99,7 +98,6 @@ total 176
 -rw-r--r--@ 1 root  staff      8  4 jan 11:07 AUTHORS
 drwxr-xr-x@ 5 root  staff    160  6 jan 09:41 Concept
 -rw-r--r--@ 1 root  staff   4392  8 jan 09:19 README.md
--rw-r--r--@ 1 root  staff    509  7 jan 13:24 _getenv.c
 -rw-r--r--@ 1 root  staff    491  8 jan 09:14 built_in.c
 -rw-r--r--@ 1 root  staff    597  7 jan 12:59 execute.c
 -rw-r--r--@ 1 root  staff   1614  7 jan 14:01 find_command.c
