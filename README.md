@@ -83,7 +83,7 @@ exit
 
 ## 🧩 Flowchart
 
-*Flowchart illustrating the program's flow coming soon! Stay tuned.*
+[![Flowchart](flowchart_small.png)](flowchart.png)
 
 ## 📂 File Structure
 
