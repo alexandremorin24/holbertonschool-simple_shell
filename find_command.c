@@ -14,7 +14,7 @@ char *find_command(char **paths, char *command)
 	size_t i = 0, path_len, cmd_len;
 	char *full_path = NULL;
 
-	if (command[0] == '/')
+	if (command[0] == '/' || command[0] == '.')
 	{
 		if (access(command, F_OK) == 0 && access(command, X_OK) == 0)
 			return (command);  /* Return absolute path directly */
